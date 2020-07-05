@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openbox_menu xmlns="http://openbox.org/" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/
+                file:///usr/share/openbox/menu.xsd">
+
+    <menu id="root-menu" label="Openbox 3">
+
+        <item label="Terminal">
+            <action name="Execute">
+                <execute>xfce4-terminal</execute>
+            </action>
+        </item>
+
+        <item label="Chromium">
+            <action name="Execute">
+                <execute>chromium-browser --no-sandbox</execute>
+            </action>
+        </item>
+
+        <item label="Swarm">
+            <action name="Execute">
+                <execute>bash -c 'cd sw;java -Duser.country=US -Duser.language=us -jar swarm.jar'</execute>
+            </action>
+        </item>
+
+        <item label="OBS">
+            <action name="Execute">
+                <execute>obs --multi --portable</execute>
+            </action>
+        </item>
+
+        <item label="File Browser">
+            <action name="Execute">
+                <execute>nautilus</execute>
+            </action>
+        </item>
+
+        <separator />
+        <item label="Restart">
+            <action name="Restart" />
+        </item>
+        <item label="Exit">
+            <action name="Exit" />
+        </item>
+    </menu>
+
+</openbox_menu>

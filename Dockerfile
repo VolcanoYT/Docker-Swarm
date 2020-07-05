@@ -21,13 +21,13 @@ RUN apk --update --no-cache add \
     bash sudo wget ca-certificates supervisor unzip \
     ttf-dejavu mesa-dri-swrast xvfb x11vnc novnc openjdk8
 
+# Install APP
+RUN apk --no-cache add \
+    xfce4-terminal nautilus chromium obs-studio ffmpeg vlc
+
 # Install GUI
 RUN apk --no-cache add \
-    openbox tint2
-
-# Install add-one
-RUN apk --no-cache add \
-    xfce4-terminal nautilus chromium obs-studio ffmpeg
+    openbox tint2 xdg-utils xset
 
 # Set lang
 # ENV LC_ALL C.UTF-8 \

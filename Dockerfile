@@ -50,12 +50,12 @@ COPY app $WORK/
 COPY etc /etc/
 
 # Auto Start (Normal You can't find the auto folder because this is different for each user's config so if you want to run automatically, please set this)
-COPY auto/sw/ $WORK/sw/
-COPY auto/auto-sw.conf /etc/auto-sw.conf
-COPY auto/auto-obs.conf /etc/auto-obs.conf
-COPY auto/obs/service.json $WORK/.config/obs-studio/basic/profiles/yt_akbar/service.json
-RUN cat /etc/auto-sw.conf >> /etc/supervisord.conf && \
-    cat /etc/auto-obs.conf >> /etc/supervisord.conf
+# COPY auto/sw/ $WORK/sw/
+# COPY auto/auto-sw.conf /etc/auto-sw.conf
+# COPY auto/auto-obs.conf /etc/auto-obs.conf
+# COPY auto/obs/service.json $WORK/.config/obs-studio/basic/profiles/yt_akbar/service.json
+# RUN cat /etc/auto-sw.conf >> /etc/supervisord.conf && \
+#     cat /etc/auto-obs.conf >> /etc/supervisord.conf
 
 # Fix NoVNV index file no found
 RUN ln -s /usr/share/novnc/vnc.html /usr/share/novnc/index.html

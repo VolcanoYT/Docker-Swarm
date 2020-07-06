@@ -1,6 +1,6 @@
 # Docker Swarm
 
-Run Swarm (analyze seismic by usgs), and includes app nautilus,chromium,obs-studio,ffmpeg,vlc for remote monitoring.
+Run Swarm (analyze seismic by usgs), and includes app nautilus,chromium,obs-studio,ffmpeg,vlc for remote monitoring (base alpine)
 
 ![Screenshot](show_me.jpg)
 

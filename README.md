@@ -15,7 +15,7 @@ docker run --rm -it  -p 5901:5901/tcp -p 6080:6080/tcp repo.volcanoyt.com/docker
 or please build it manually so you can use it without a password :)
 
 ```bash
-docker build -t "docker-swarm:last" -f Dockerfile .
+docker build -t "docker-swarm:last" -f Dockerfile.base .
 ```
 
 - Web Remote: http://localhost:6080 with password "demo"

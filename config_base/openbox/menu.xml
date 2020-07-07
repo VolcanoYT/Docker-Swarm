@@ -32,7 +32,7 @@
 
         <item label="File Browser">
             <action name="Execute">
-                <execute>nautilus</execute>
+                <execute>thunar</execute>
             </action>
         </item>
 

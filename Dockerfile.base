@@ -23,7 +23,7 @@ RUN apk --update --no-cache add \
 
 # Install APP
 RUN apk --no-cache add \
-    xfce4-terminal nautilus chromium obs-studio ffmpeg vlc
+    xfce4-terminal thunar chromium obs-studio ffmpeg vlc
 
 # Install GUI
 RUN apk --no-cache add \

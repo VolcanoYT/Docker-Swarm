@@ -1,4 +1,4 @@
-FROM repo.volcanoyt.com/base:novnc-alpine
+FROM repo.volcanoyt.com/base_novnc-alpine
 
 RUN apk --no-cache add chromium obs-studio ffmpeg vlc openjdk8
 

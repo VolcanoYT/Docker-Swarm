@@ -1,0 +1,41 @@
+FROM repo.volcanoyt.com/base_novnc-alpine
+
+RUN apk --no-cache add ffmpeg vlc openjdk8 chromium
+
+RUN apk --no-cache add git make gcc g++ libcurl curl-dev libpulse cmake ffmpeg-dev libxinerama-dev qt5-qtbase-dev qt5-qtx11extras-dev qt5-qtsvg-dev x264-dev fontconfig-dev libxcomposite-dev pulseaudio-dev jack-dev vlc-dev alsa-lib-dev fdk-aac-dev speexdsp-dev v4l-utils-dev jansson-dev eudev-dev swig mbedtls-dev python3-dev libxscrnsaver-dev libxcb-dev libx11-dev freetype-dev mesa-dev
+
+RUN \
+    #wget https://cdn-fastly.obsproject.com/downloads/cef_binary_3770_linux64.tar.bz2 &&\
+    #tar -xjf ./cef_binary_3770_linux64.tar.bz2 &&\
+    git clone --recursive https://github.com/obsproject/obs-studio.git &&\
+    cd obs-studio &&\
+    mkdir build && cd build &&\
+    cmake -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DUNIX_STRUCTURE=1 .. \
+    #-DBUILD_BROWSER=ON -DCEF_ROOT_DIR="../../cef_binary_3770_linux64" \
+    &&\
+    make -j4 &&\
+    make install
+
+WORKDIR $WORK
+
+# Start bulid swarm from repo dev
+# RUN apk --update --no-cache add maven && wget https://github.com/usgs/swarm/archive/master.zip && unzip master.zip -d $WORK && cd swarm-master && mvn install
+
+COPY config_base $WORK/.config/
+COPY etc_base /etc/
+COPY app $WORK/
+
+# Auto Start (Normal You can't find the auto folder because this is different for each user's config so if you want to run automatically, please set this)
+# COPY auto/sw/ $WORK/sw/
+# COPY auto/auto-sw.conf /etc/auto-sw.conf
+# COPY auto/auto-obs.conf /etc/auto-obs.conf
+# COPY auto/obs/service.json $WORK/.config/obs-studio/basic/profiles/yt_akbar/service.json
+# RUN cat /etc/auto-sw.conf >> /etc/supervisord.conf && \
+#     cat /etc/auto-obs.conf >> /etc/supervisord.conf
+
+# Fix Permission
+RUN chown -R $USER $WORK/ && \
+    chmod -R 775 $WORK/
+
+# Start Magic!
+CMD ["/usr/bin/supervisord","-c","/etc/supervisord.conf"]

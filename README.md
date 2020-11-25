@@ -1,15 +1,15 @@
 # Docker Swarm
 
-Run Swarm (analyze seismic by usgs), and includes app nautilus,chromium,obs-studio,ffmpeg,vlc for remote monitoring (base alpine)
+Run Swarm (analyze seismic by usgs), and includes app nautilus,chromium,obs-studio,ffmpeg,vlc for remote monitoring.
 
 ![Screenshot](show_me.jpg)
 
 ## How to Use!
 
-Use docker to run it (VolcanoYT Repo requires a password, please ask me first)
+Via alpine
 
 ```bash
-docker run --rm -it  -p 5901:5901/tcp -p 6080:6080/tcp repo.volcanoyt.com/docker-swarm:last
+docker run --rm -it  -p 5901:5901/tcp -p 6080:6080/tcp repo.volcanoyt.com/docker-swarm:alpine
 ```
 
 - Web Remote: http://localhost:6080 with password "demo"

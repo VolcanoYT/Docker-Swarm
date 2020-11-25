@@ -1,8 +1,15 @@
-FROM repo.volcanoyt.com/base_novnc-alpine
+FROM repo.volcanoyt.com/base_novnc-ubuntu
 
-RUN apk --no-cache add chromium obs-studio ffmpeg vlc openjdk8
+RUN apt-get update && apt-get -y install software-properties-common &&\
+    add-apt-repository ppa:obsproject/obs-studio-unstable &&\
+    add-apt-repository ppa:videolan/master-daily &&\
+    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - &&\
+    sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' &&\
+    apt-get update && apt-get install --yes google-chrome-unstable vlc obs-studio ffmpeg
 
 WORKDIR $WORK
+
+#RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && dpkg -i google-chrome-stable_current_amd64.deb
 
 # Start bulid swarm from repo dev
 # RUN apk --update --no-cache add maven && wget https://github.com/usgs/swarm/archive/master.zip && unzip master.zip -d $WORK && cd swarm-master && mvn install
